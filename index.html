@@ -8,21 +8,25 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <button onclick="addBookToLibrary()"> New Book </button>
+    <div class="header">
+        <button onclick="openForm()" id="newBookButton"> New Book </button>
+    </div>
+    <div id="bookContainer">
 
-    <div class="formContainer">
-        <form action="" method="post" onsubmit="event.preventDefault()">
+    </div>
+    <div class="formContainer" id="formContainer">
+        <form action="" method="post" id="bookForm" onsubmit="event.preventDefault()">
             <div>
                 <label for="title"> Title: </label>
-                <input type="text" id="title" name="bookTitle">
+                <input type="text" id="title" name="bookTitle" placeholder="The Hobbit">
             </div>
             <div>
                 <label for="author"> Author: </label>
-                <input type="text" id="author" name="bookAuthor">
+                <input type="text" id="author" name="bookAuthor" placeholder="J. R. R. Tolkien">
             </div>
             <div>
                 <label for="pages"> Page Count: </label>
-                <input type="text" id="pages" name="bookPages">
+                <input type="text" id="pages" name="bookPages" placeholder="304">
             </div>
             <div>
                 <fieldset>
@@ -36,7 +40,7 @@
                 </fieldset>
             </div>
             <div>
-                <input type="submit">
+                <input id="submit" type="submit" onclick="addBookToLibrary()">
             </div>
         </form>
 
