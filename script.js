@@ -15,7 +15,7 @@ function addBookToLibrary(){
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
-    let didRead = document.getElementById('didRead').value;
+    let didRead = document.getElementById('didRead').checked;
 
     myLibrary.push(new Book(title, author, pages, didRead));
     
@@ -71,14 +71,27 @@ function createBookDiv(Book){
 
     //create read or not read block
     let content4 = document.createElement("button");
-    let node4 = document.createTextNode(didRead(Book));
+    content4.addEventListener('click', (e) => {
+        if(Book.didRead)
+        {
+            Book.didRead = false; 
+            content4.innerHTML = didRead(Book, content4);
+            content4.style.backgroundColor = "white";
+        }
+        else{
+            Book.didRead = true;
+            content4.innerHTML = didRead(Book, content4);
+            content4.style.backgroundColor = "green";
+        }
+    });
+    let node4 = document.createTextNode(didRead(Book, content4));
     content4.appendChild(node4);
     newBook.appendChild(content4);
 
     //create delete button
     let content5 = document.createElement("button");
     content5.setAttribute('id', 'delete');
-    content5.addEventListener('click', (e) => deleteBook());
+    content5.addEventListener('click', (e) => deleteBook(Book));
     let node5 = document.createTextNode("Remove");
     content5.appendChild(node5);
     newBook.appendChild(content5);
@@ -87,27 +100,30 @@ function createBookDiv(Book){
     divCont.appendChild(newBook)
 }
 
-function didRead(Book){
+function didRead(Book, element){
     if(Book.didRead){
+        element.style.backgroundColor = "green";
         return "Read";
     }
     else{
+        element.style.backgroundColor = "white";
         return "Not Read";
     }
 }
 
-function deleteBook(){
-
-    myLibrary.splice(myLibrary.indexOf(this.title), 1);
+function deleteBook(Book){
+    myLibrary.splice(myLibrary.indexOf(Book), 1);
     displayMyLibrary();
 }
 
 function openForm() {
     document.getElementById("formContainer").style.display = "block";
+    document.getElementById("bg").style.display = "block";
   }
   
 function closeForm() {
     document.getElementById("formContainer").style.display = "none";
+    document.getElementById("bg").style.display = "none";
   }
 
 // window.onclick = function(event) {

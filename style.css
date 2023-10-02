@@ -68,6 +68,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 20px;
+    
 }
 
 #books:hover{
@@ -93,14 +94,29 @@ body{
     background-color: rgb(180, 47, 47);
 }
 
+.read{
+    background-color: green;
+}
+
 .formContainer{
     display: none;
     width: 350px;
     position: absolute;
-    left: 45%;
+    left: 0;
+    right: 0;
+    margin: auto;
     top: 40%;
-    background-color: var(--background-color);
-    border-radius: 2px;
+    background-color: var(--form-color);
+    z-index: 2;
+    border-radius: 3px;
+}
+
+#exit{
+    display: flex;
+    justify-content: right;
+    margin-right: 2%;
+    margin-left: 98%;
+    cursor: pointer;
 }
 
 form{
@@ -109,7 +125,7 @@ form{
     gap: 10px;
     padding: 15px;
     font-family: "Quicksand";
-    background-color: var(--form-color);
+    border-radius: 5px;
 }
 
 form > div{
@@ -147,4 +163,16 @@ fieldset > legend{
 #submit:hover{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     cursor: pointer;
+}
+
+#bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(1.8px);
+    display: none;
 }

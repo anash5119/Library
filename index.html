@@ -8,6 +8,7 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <div id="bg"></div>
     <div class="header">
         <button onclick="openForm()" id="newBookButton"> New Book </button>
     </div>
@@ -15,6 +16,7 @@
 
     </div>
     <div class="formContainer" id="formContainer">
+        <div id="exit" onclick="closeForm()">×</div>
         <form action="" method="post" id="bookForm" onsubmit="event.preventDefault()">
             <div>
                 <label for="title"> Title: </label>
