@@ -32,10 +32,10 @@ function displayMyLibrary(){
     //     //console.log(myLibrary[index].title);
     //     let newBook = document.createElement("div");
     //     newBook.setAttribute('id', 'books'); 
-    //     let content1 = document.createElement("p");
-    //     let node1 = document.createTextNode(myLibrary[index].title);
-    //     content1.appendChild(node1);
-    //     newBook.appendChild(content1);
+    //     let titleElement = document.createElement("p");
+    //     let titleNode = document.createTextNode(myLibrary[index].title);
+    //     titleElement.appendChild(titleNode);
+    //     newBook.appendChild(titleElement);
 
     //     console.log(myLibrary[index].title);
     //     divCont.appendChild(newBook);
@@ -52,49 +52,49 @@ function createBookDiv(Book){
     newBook.setAttribute('id', 'books'); 
 
     //create title block
-    let content1 = document.createElement("p");
-    let node1 = document.createTextNode(Book.title);
-    content1.appendChild(node1);
-    newBook.appendChild(content1);
+    let titleElement = document.createElement("p");
+    let titleNode = document.createTextNode(Book.title);
+    titleElement.appendChild(titleNode);
+    newBook.appendChild(titleElement);
 
     //create author block
-    let content2 = document.createElement("p");
-    let node2 = document.createTextNode(Book.author);
-    content2.appendChild(node2);
-    newBook.appendChild(content2);
+    let authorElement = document.createElement("p");
+    let authorNode = document.createTextNode(Book.author);
+    authorElement.appendChild(authorNode);
+    newBook.appendChild(authorElement);
 
     //create page block
-    let content3 = document.createElement("p");
-    let node3 = document.createTextNode(Book.pages + " pages");
-    content3.appendChild(node3);
-    newBook.appendChild(content3);
+    let pageElement = document.createElement("p");
+    let pageNode = document.createTextNode(Book.pages + " pages");
+    pageElement.appendChild(pageNode);
+    newBook.appendChild(pageElement);
 
     //create read or not read block
-    let content4 = document.createElement("button");
-    content4.addEventListener('click', (e) => {
+    let readElement = document.createElement("button");
+    readElement.addEventListener('click', (e) => {
         if(Book.didRead)
         {
             Book.didRead = false; 
-            content4.innerHTML = didRead(Book, content4);
-            content4.style.backgroundColor = "white";
+            readElement.innerHTML = didRead(Book, readElement);
+            readElement.style.backgroundColor = "white";
         }
         else{
             Book.didRead = true;
-            content4.innerHTML = didRead(Book, content4);
-            content4.style.backgroundColor = "green";
+            readElement.innerHTML = didRead(Book, readElement);
+            readElement.style.backgroundColor = "green";
         }
     });
-    let node4 = document.createTextNode(didRead(Book, content4));
-    content4.appendChild(node4);
-    newBook.appendChild(content4);
+    let readNode = document.createTextNode(didRead(Book, readElement));
+    readElement.appendChild(readNode);
+    newBook.appendChild(readElement);
 
     //create delete button
-    let content5 = document.createElement("button");
-    content5.setAttribute('id', 'delete');
-    content5.addEventListener('click', (e) => deleteBook(Book));
-    let node5 = document.createTextNode("Remove");
-    content5.appendChild(node5);
-    newBook.appendChild(content5);
+    let deleteElement = document.createElement("button");
+    deleteElement.setAttribute('id', 'delete');
+    deleteElement.addEventListener('click', (e) => deleteBook(Book));
+    let deleteNode = document.createTextNode("Remove");
+    deleteElement.appendChild(deleteNode);
+    newBook.appendChild(deleteElement);
 
     //console.log(myLibrary[index].title);
     divCont.appendChild(newBook)
